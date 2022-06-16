@@ -6,6 +6,8 @@
         <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
         <script src="javascripts/vue.js" defer></script>
+        <script src="https://kit.fontawesome.com/d0e8f615cc.js" crossorigin="anonymous"></script>
+                
     </head>
     <body>
 
@@ -33,22 +35,26 @@
                 <label for="Deluxe">Deluxe</label>
             </div>
             <div class="Browse">
-                <p class="inline">Browse the type of rooms on offer</p>
-                <select id = "typeofroom" v-model="Category" onchange="Myapp.OnSelect()" >
-                    <option disabled selected>Types of rooms</option>
-                    <option value="Standard">Standard Room</option>
-                    <option value="Deluxe">Deluxe</option>
-                    <option value = "Double">Double</option>
-                </select>
-                <button onclick="Myapp.OnSelect()">Show</button>
+                <p class="inline">Checkout our rooms and hotel: </p>
+                <div>
+                    <button class = "checkmyhotel" @click="OnSelect('hotel',this)">Hotel</button>
+                    <button class = "checkmyhotel" @click="OnSelect('Standard',this)">Standard</button>
+                    <button class = "checkmyhotel" @click="OnSelect('Double',this)">Double</button>
+                    <button class = "checkmyhotel" @click="OnSelect('Deluxe',this)">Deluxe</button>
+                </div>
             </div>
             <div id = "imageDisp" class = "hotelimage">          
             </div>
-            <div  class="descriptive" v-if="Category == 'Types of rooms'">
-
+            <div  class="descriptive" v-if="selectHotel">
+                <p>This is a hotel that opened tday! Welcome! </p>
+                <p>Number of rooms: 25</p>
+                <p>Contact General Manager (email): gm@emxal.com</p>
             </div>
             <div class="descriptive" v-else>
-
+                <p>{{currentRoom.Description}}</p>
+                <p>Maximum number of adults allowed per room: {{currentRoom.maxAdults}}</p>
+                <p>Maximum number of children per room: {{currentRoom.maxChildren}}</p>
+                <p>Price/night : {{currentRoom.Price}}</p>
             </div>
             
             

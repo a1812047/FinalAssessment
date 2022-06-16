@@ -35,8 +35,8 @@ nav{
 }
 
 .inline{
-  display: inline;
-  margin: 1rem;
+  display: inline-block;
+  margin: 0rem;
 }
 
 .Browse{
@@ -45,4 +45,27 @@ nav{
   text-align: left;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+.dropdownmenu{
+  display: none;
+}
+#typeofroom:hover{
+  cursor: pointer;
+}
+#typeofroom:hover .dropdownmenu{
+  display: block;
+  cursor: pointer;
+}
+
+.checkmyhotel{
+  padding: 0.5rem;
+  width: 8rem;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: antiquewhite;
+}
+
+.checkmyhotel:hover{
+  cursor: pointer;
+  background-color: bisque;
 }

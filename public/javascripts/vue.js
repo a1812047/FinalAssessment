@@ -6,7 +6,13 @@ var Myapp = new Vue({
         CheckOut:"",
         Category:"Types of rooms",
         roomsSelected:[],
-        currentRoom:{},
+        selectHotel :true,
+        selectRooms:false,
+        currentRoom:{image:'../images/Standard.jpg',
+        Description:"This is a Standard room! Enjoy yoour stay",
+        maxAdults:2,
+        maxChildren:2,
+        Price: '120AUD/night'},
         TypeofRooms:{
             Standard:{
                 image:'../images/Standard.jpg',
@@ -63,20 +69,32 @@ var Myapp = new Vue({
             const calendar = document.getElementById("calendar2");
             calendar.setAttribute('min',currentYear+"-"+currentMonth+"-"+currentDate);
         },
-        OnSelect: function(){
-            console.log("you selected this value");
-            if(this.Category === "Standard"){
+        OnSelect: function(X,Y){
+            Y.style.backgroundColor = 'lightblue';
+            let value = X;
+            console.log("you selected this value"+value);
+            if(X === "Standard"){
+                selectRooms = true;
                 this.currentRoom = this.TypeofRooms.Standard;
                 // document.getElementById("imageDisp").style.backgroundImage = 'url('+this.TypeofRooms.Standard.image+')';
-            }else if(this.Category === "Double"){
+            }else if(X === "Double"){
+                selectRooms = true;
                 this.currentRoom = this.TypeofRooms.Double;
                 // document.getElementById("imageDisp").style.backgroundImage = 'url('+this.TypeofRooms.Double.image+')';
-            }else if(this.Category === "Deluxe"){
+            }else if(X === "Deluxe"){
+                selectRooms = true;
                 this.currentRoom = this.TypeofRooms.Deluxe;
                 // document.getElementById("imageDisp").style.backgroundImage = 'url('+this.TypeofRooms.Deluxe.image+')';
+            }else{
+                selectHotel = true;
+                selectRooms = false;
             }
             console.log(this.currentRoom);
-             document.getElementById("imageDisp").style.backgroundImage = 'url('+this.currentRoom.image+')';
+            if(selectRooms == true){
+                document.getElementById("imageDisp").style.backgroundImage = 'url('+this.currentRoom.image+')';
+            }else{
+                document.getElementById("imageDisp").style.backgroundImage = 'url(/images/Hotel_image.jpg)';
+            }
 
 
         }
