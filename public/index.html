@@ -8,26 +8,50 @@
         <script src="javascripts/vue.js" defer></script>
     </head>
     <body>
-        <nav>
-            
-        </nav>
+
         <main id = "app" >
-            <div class = "hotelimage">
-            </div>
+            <nav>
+                
+            </nav>
             <div class = "Availability_Bar">
-                <hr>
-                <h5 class="white">Check Availability :</h5>
-                <label for="Check-in">Check-in:</label>
-                <input type="date" name="Check-in">
+                <fieldset>
+                    <legend class="white">
+                        Check Availability :
+                    </legend>
+                    <label  for="Check-in" >Check-in:</label>
+                <input id = "calendar" type="date" name="Check-in" @click="setMinDate" v-model="CheckIn">
                 <label for="Check-out">Check-out: </label>
-                <input type="date" name="Check-out" >
-                <button>Search</button>
-    
-
-
-                <hr>
+                <input id = "calendar2" type="date" name="Check-out" @click="setMinDate2" v-model="CheckOut" disabled>
+                <button id = "search" disabled>Search</button>
+                </fieldset> 
+                <p class="inline">Filter By Room type:</p> 
+                <input type="checkbox"  value = "Standard" v-model="roomsSelected">
+                <label for="Standard">Standard</label>
+                <input type="checkbox" value = "Double" v-model="roomsSelected">
+                <label for="Double">Double</label>
+                <input type="checkbox" value = "Deluxe" v-model="roomsSelected">
+                <label for="Deluxe">Deluxe</label>
+            </div>
+            <div class="Browse">
+                <p class="inline">Browse the type of rooms on offer</p>
+                <select id = "typeofroom" v-model="Category" onchange="Myapp.OnSelect()" >
+                    <option disabled selected>Types of rooms</option>
+                    <option value="Standard">Standard Room</option>
+                    <option value="Deluxe">Deluxe</option>
+                    <option value = "Double">Double</option>
+                </select>
+                <button onclick="Myapp.OnSelect()">Show</button>
+            </div>
+            <div id = "imageDisp" class = "hotelimage">          
+            </div>
+            <div  class="descriptive" v-if="Category == 'Types of rooms'">
 
             </div>
+            <div class="descriptive" v-else>
+
+            </div>
+            
+            
             
         </main>
     </body>
