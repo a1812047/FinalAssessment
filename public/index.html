@@ -37,10 +37,10 @@
             <div class="Browse">
                 <p class="inline">Checkout our rooms and hotel: </p>
                 <div>
-                    <button class = "checkmyhotel" @click="OnSelect('hotel',this)">Hotel</button>
-                    <button class = "checkmyhotel" @click="OnSelect('Standard',this)">Standard</button>
-                    <button class = "checkmyhotel" @click="OnSelect('Double',this)">Double</button>
-                    <button class = "checkmyhotel" @click="OnSelect('Deluxe',this)">Deluxe</button>
+                    <button class = "checkmyhotel" v-bind:class = "{active: Hotel}" onclick = "myclick('hotel')" @click="OnSelect('hotel')">Hotel</button>
+                    <button class = "checkmyhotel" v-bind:class = "{active: Standard}" onclick = "myclick('Standard')" @click="OnSelect('Standard')">Standard</button>
+                    <button class = "checkmyhotel" v-bind:class = "{active: Double}" onclick = "myclick('Double')" @click="OnSelect('Double')">Double</button>
+                    <button class = "checkmyhotel" v-bind:class = "{active: Deluxe}" onclick = "myclick('Deluxe')" @click="OnSelect('Deluxe')">Deluxe</button>
                 </div>
             </div>
             <div id = "imageDisp" class = "hotelimage">          

@@ -2,6 +2,10 @@
 var Myapp = new Vue({
     el:"#app",
     data:{
+        Hotel: true,
+        Standard:false,
+        Double:false,
+        Deluxe:false,
         CheckIn:"",
         CheckOut:"",
         Category:"Types of rooms",
@@ -100,6 +104,23 @@ var Myapp = new Vue({
         }
     }
 });
+
+function myclick(value){
+
+    if(value == 'hotel'){
+        Myapp.Hotel == true;
+        Myapp.Standard = Myapp.Double =Myapp.Deluxe = false;
+    }else if(value == 'Standard'){
+        Myapp.Standard == true;
+        Myapp.Hotel = Myapp.Double =Myapp.Deluxe = false;
+    }else if(value == 'Double'){
+        Myapp.Double == true;
+        Myapp.Standard = Myapp.Hotel =Myapp.Deluxe = false;
+    }else{
+        Myapp.Deluxe == true;
+        Myapp.Standard = Myapp.Double =Myapp.Hotel = false;
+    }
+}
 
 setInterval(setdate,100);
 function setdate(){
